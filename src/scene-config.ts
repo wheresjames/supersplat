@@ -28,6 +28,7 @@ const sceneConfig = {
         shBands: 3
     },
     controls: {
+        movement: 'default',
         dampingFactor: 0.2,
         minPolarAngle: 0,
         maxPolarAngle: Math.PI,
@@ -37,7 +38,21 @@ const sceneConfig = {
         initialElev: -10,
         initialZoom: 1.0,
         orbitSensitivity: 0.3,
-        zoomSensitivity: 0.4
+        zoomSensitivity: 0.4,
+        wjmovement: {
+            threshold: 0.01,
+            decay: 0.95,
+            acceleration: 2.0,
+            orbitInputScale: 0.025,
+            panInputScale: 0.002,
+            zoomInputScale: 0.02,
+            wheelInputScale: 0.025,
+            wheelAccelerationScale: 0.25,
+            minElevation: -81,
+            maxElevation: 81,
+            minimumDistance: 0.1,
+            pushFocusPoint: true
+        }
     },
     debug: {
         showBound: false

@@ -50,6 +50,34 @@ The camera controls in SuperSplat are as follows:
 
 To set the target point for orbiting the camera, double click anywhere in the 3D view.
 
+### Optional inertial movement
+
+The standard camera movement remains the default. An alternative inertial
+controller can be enabled with the `controls.movement` URL setting:
+
+```
+https://superspl.at/editor?controls.movement=wjmovement
+```
+
+With this controller, left-drag or one-finger drag orbits, right-drag or a
+two-finger drag pans, and the middle mouse button, wheel, or pinch zooms. Input
+adds velocity, so movement slows smoothly after the gesture ends. Zooming past
+the minimum distance advances the orbit target through the scene.
+
+The response can be tuned with the following URL settings:
+
+- `controls.wjmovement.decay`
+- `controls.wjmovement.acceleration`
+- `controls.wjmovement.orbit-input-scale`
+- `controls.wjmovement.pan-input-scale`
+- `controls.wjmovement.zoom-input-scale`
+- `controls.wjmovement.wheel-input-scale`
+- `controls.wjmovement.wheel-acceleration-scale`
+- `controls.wjmovement.min-elevation`
+- `controls.wjmovement.max-elevation`
+- `controls.wjmovement.minimum-distance`
+- `controls.wjmovement.push-focus-point`
+
 ## Visualizing Splats
 
 Splats can be rendered in two 'modes':
