@@ -13,7 +13,7 @@
         <!-- Service worker -->
         <script>
             const sw = navigator.serviceWorker;
-            if (sw) {
+            if (sw && __ENABLE_SERVICE_WORKER__) {
                 sw.register('./sw.js')
                     .then(reg => console.log('service worker registered', reg))
                     .catch(err => console.log('failed to register service worker', err));
@@ -22,6 +22,6 @@
     </head>
 
     <body>
-        <script type="module" src="./index.js"></script>
+        <script type="module" src="./index.js__INDEX_QUERY__"></script>
     </body>
 </html>
