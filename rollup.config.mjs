@@ -52,7 +52,10 @@ const application = {
                 {
                     src: 'src/index.html',
                     transform: (contents, filename) => {
-                        return contents.toString().replace('__BASE_HREF__', HREF);
+                        return contents.toString()
+                        .replace('__BASE_HREF__', HREF)
+                        .replace('__ENABLE_SERVICE_WORKER__', BUILD_TYPE === 'debug' ? 'false' : 'true')
+                        .replace('__INDEX_QUERY__', BUILD_TYPE === 'debug' ? `?v=${Date.now()}` : '');
                     }
                 },
                 { src: 'src/manifest.json' },

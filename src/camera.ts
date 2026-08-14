@@ -29,6 +29,7 @@ import {
 } from 'playcanvas';
 
 import { PointerController } from './controllers';
+import { WjMovementController } from './wjmovement-controller';
 import { Element, ElementType } from './element';
 import { Picker } from './picker';
 import { Serializer } from './serializer';
@@ -68,7 +69,7 @@ class Camera extends Element {
         result.set(-c1 * s2, s1, c1 * c2);
     }
 
-    controller: PointerController;
+    controller: PointerController | WjMovementController;
     focalPointTween = new TweenValue({ x: 0, y: 0.5, z: 0 });
     azimElevTween = new TweenValue({ azim: 30, elev: -15 });
     distanceTween = new TweenValue({ distance: 1 });
@@ -341,7 +342,9 @@ class Camera extends Element {
             });
 
         const target = document.getElementById('canvas-container');
-        this.controller = new PointerController(this, target);
+        this.controller = scene.config.controls.movement === 'wjmovement' ?
+            new WjMovementController(this, target) :
+            new PointerController(this, target);
 
         // apply scene config
         const config = scene.config;
